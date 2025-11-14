@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Digital - Ángel Agustín Fernández Antoniazzi</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .profile-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto 20px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: var(--primary);
+            overflow: hidden;
+        }
+        
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Navegación */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Secciones */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 15px auto;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        /* CV Section */
+        .cv-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        
+        .cv-name {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .cv-title {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        
+        .cv-contact {
+            text-align: right;
+        }
+        
+        .cv-section {
+            margin-bottom: 30px;
+        }
+        
+        .cv-section-title {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .cv-item {
+            margin-bottom: 20px;
+        }
+        
+        .cv-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cv-item-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .cv-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .skill-tag {
+            background-color: var(--light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary);
+        }
+        
+        .btn-download {
+            background-color: var(--accent);
+            margin-top: 20px;
+        }
+        
+        .btn-download:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Cover Letters */
+        .letters-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .letter-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+        
+        .letter-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .letter-lang {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .letter-content {
+            height: 200px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 10px;
+        }
+        
+        /* Interview Section */
+        .interview-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .interview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .interview-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .interview-participants {
+            color: var(--gray);
+        }
+        
+        .dialogue {
+            margin-bottom: 30px;
+        }
+        
+        .question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .answer {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .video-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .video-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 450px;
+            background-color: #eee;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .cv-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cv-contact {
+                text-align: left;
+            }
+            
+            .interview-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container profile-container">
+            <div class="profile-img">
+                <img src="mifotodeperfil.png" alt="Ángel Agustín Fernández">
+            </div>
+            <h1>Ángel Agustín Fernández Antoniazzi</h1>
+            <p class="tagline">Estudiante de Alto Rendimiento, Técnico y Líder</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>agustincho090@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>3543694267</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Unquillo, Córdoba, Argentina</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegación -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">Portafolio Digital</div>
+            <ul class="nav-links">
+                <li><a href="#cv">CV</a></li>
+                <li><a href="#cartas">Cartas de Presentación</a></li>
+                <li><a href="#entrevista">Entrevista Laboral</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sección CV -->
+    <section id="cv">
+        <div class="container">
+            <div class="section-title">
+                <h2>Currículum Vitae</h2>
+            </div>
+            
+            <div class="cv-container">
+                <div class="cv-header">
+                    <div>
+                        <h3 class="cv-name">Ángel Agustín Fernández Antoniazzi</h3>
+                        <p class="cv-title">Estudiante de Alto Rendimiento, Técnico y Líder</p>
+                        <p>Perfil técnico-comercial con logros cuantificables en tecnología, liderazgo y ventas.</p>
+                    </div>
+                    <div class="cv-contact">
+                        <p>agustincho090@gmail.com</p>
+                        <p>+54 3543694267</p>
+                        <p>Unquillo, Córdoba, Argentina</p>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h4 class="cv-section-title">Experiencia Destacada</h4>
+                    
+                    <div class="cv-item">
+                        <div class="cv-item-title">Pasantía en Informática – Universidad Blas Pascal</div>
+                        <div class="cv-item-date">Finalizada en Abril 2025</div>
+                        <p>Seleccionado entre 270 candidatos, lo que demuestra un nivel de competencia y potencial superior al 99% de los postulantes.</p>
+                    </div>
+                    
+                    <div class="cv-item">
+                        <div class="cv-item-title">Premios en Ferias de Ciencias (Robótica/Programación)</div>
+                        <div class="cv-item-date">Septiembre 2024 y Septiembre 2025</div>
+                        <p>Liderazgo en proyectos premiados con 1er Puesto Escolar, 1er Puesto Regional y Premio Provincial en dos ediciones consecutivas. Aplicación práctica de conocimientos en Arduino y Domótica.</p>
+                    </div>
+                    
+                    <div class="cv-item">
+                        <div class="cv-item-title">Venta de Soldadoras Industriales Online – Emprendimiento Propio</div>
+                        <div class="cv-item-date">Septiembre 2025 – Actualidad</div>
+                        <p>Experiencia en negociación y gestión de clientes en el sector industrial, trabajando específicamente con equipos de la marca ESAB.</p>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h4 class="cv-section-title">Formación Académica</h4>
+                    
+                    <div class="cv-item">
+                        <div class="cv-item-title">Nivel Secundario Completo – Instituto Nuestra Señora de las Mercedes</div>
+                        <div class="cv-item-date">Diciembre 2025</div>
+                        <p>Egresado con promedio destacado superior a 8.</p>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h4 class="cv-section-title">Habilidades Técnicas</h4>
+                    <div class="cv-skills">
+                        <span class="skill-tag">Arduino</span>
+                        <span class="skill-tag">Robótica</span>
+                        <span class="skill-tag">Domótica</span>
+                        <span class="skill-tag">Office (Word, Excel, PowerPoint)</span>
+                        <span class="skill-tag">Windows</span>
+                        <span class="skill-tag">Ventas</span>
+                        <span class="skill-tag">Negociación</span>
+                        <span class="skill-tag">Conocimiento de marca ESAB</span>
+                        <span class="skill-tag">Inglés (Básico-Medio)</span>
+                    </div>
+                </div>
+                
+                <div class="cv-section">
+                    <h4 class="cv-section-title">Competencias Personales</h4>
+                    <div class="cv-skills">
+                        <span class="skill-tag">Liderazgo de Crisis</span>
+                        <span class="skill-tag">Proactividad</span>
+                        <span class="skill-tag">Adaptabilidad</span>
+                        <span class="skill-tag">Trabajo en Equipo</span>
+                        <span class="skill-tag">Resolución de Problemas</span>
+                    </div>
+                </div>
+                
+                <a href="https://docs.google.com/document/d/13kwkMM1mv4vHieZmWClFVgZaNPvT0sZ5SzSBepyo2cI/edit" 
+                   class="btn btn-download" 
+                   target="_blank">
+                    <i class="fas fa-eye"></i> Ver CV Completo Online
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Cartas de Presentación -->
+    <section id="cartas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cartas de Presentación</h2>
+            </div>
+            
+            <div class="letters-container">
+                <div class="letter-card">
+                    <span class="letter-lang">Español</span>
+                    <div class="letter-content">
+                        <p><strong>Agustin Fernandez</strong><br>
+                        3543-694267 – agustincho090@gmail.com<br>
+                        Unquillo-Córdoba-Argentina, 09/05/2025</p>
+                        
+                        <p><strong>Dirigida a la empresa especializada en informática:</strong></p>
+                        
+                        <p>Me dirijo a ustedes con el propósito de expresar mi interés en formar parte de su equipo de trabajo, en el área de informática. Actualmente curso la especialidad en Informática en el Colegio Nuestra Señora de las Mercedes, donde he adquirido una sólida base teórica y práctica en temas fundamentales para el desarrollo tecnológico y profesional en este campo.</p>
+                        
+                        <p>Tuve la oportunidad de realizar pasantías en los laboratorios de informática de la Universidad Blas Pascal, donde profundicé mis conocimientos sobre hardware, software, redes informáticas, sistemas operativos y distintos lenguajes de programación. Esta experiencia no solo me permitió aplicar lo aprendido en el aula, sino también enfrentar desafíos reales, resolver problemas técnicos, y comprender el valor del trabajo colaborativo en un entorno profesional.</p>
+                        
+                        <p>Además de mis conocimientos técnicos, considero que poseo habilidades personales que me convierten en un candidato valioso. Me destaco por mi capacidad de adaptación a nuevas situaciones, mi predisposición para el trabajo en equipo, y mi habilidad para encontrar soluciones prácticas a los problemas que se presentan. Aprendo rápido, me gusta asumir responsabilidades y siempre estoy dispuesto a seguir perfeccionándose.</p>
+                        
+                        <p>Cuento con una amplia disponibilidad horaria, tanto por la mañana como por la tarde-noche, lo que me permite adaptarme a diferentes turnos o necesidades que puedan surgir. Estoy convencido de que incorporarme a una empresa especializada como la suya sería una excelente oportunidad para crecer profesionalmente, aportar mis conocimientos y continuar aprendiendo de un entorno dinámico y exigente.</p>
+                        
+                        <p>Agradezco de antemano su tiempo y consideración, y quedo a disposición para una entrevista o instancia de evaluación que consideren necesaria.</p>
+                        
+                        <p>Atentamente,<br>
+                        Agustin Fernandez</p>
+                    </div>
+                </div>
+                
+                <div class="letter-card">
+                    <span class="letter-lang">English</span>
+                    <div class="letter-content">
+                        <p><strong>To the IT company</strong></p>
+                        
+                        <p>My name is Agustín Fernandez. My phone number is 3543-69-4267. My email is agustincho090@gmail.com<br>
+                        I live in Unquillo – Cordoba – Argentina and my Id n° is 48-074-586</p>
+                        
+                        <p>I am a student of the IT orientation of "Nuestra Señora de las Mercedes" school. I have learned theory and practice in different areas of technology, such as programming, networks and operating systems.</p>
+                        
+                        <p>Besides, this year I had an intership at University Blas Pascal, where I worked in the computer labs. There I improved my knowledge about hardware and software, solved real problems and learned the importance of teamwork in a professional space.</p>
+                        
+                        <p>I consider myself a responsible and adaptable person. I learn fast, I like working in teams, and I always try to find practical solutions. I am motivated to continue improving my skills and growing in the IT field.</p>
+                        
+                        <p>I am available in the morning, afternoon, and evening. I would be very happy to join your company, contribute with my knowledge, and learn from new experiences.</p>
+                        
+                        <p>Thank you very much for your time and consideration. I am available for an interview at any time.</p>
+                        
+                        <p>Sincerely,<br>
+                        Agustín Fernandez</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Entrevista Laboral -->
+    <section id="entrevista">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entrevista Laboral</h2>
+            </div>
+            
+            <div class="interview-container">
+                <div class="interview-header">
+                    <h3 class="interview-title">Job Interview</h3>
+                    <p class="interview-participants">Agustín Fernández y Gonzalo Cuffré</p>
+                </div>
+                
+                <div class="dialogue">
+                    <h4>Job Interview – Transcripción completa</h4>
+                    <p><strong>Agustín Fernández y Gonzalo Cuffré</strong></p>
+                    
+                    <div class="question">Employer (Gonza): Good morning, Agustín. Can you tell me a little about yourself?</div>
+                    <div class="answer">Candidate (Agus): Good morning. My name is Agustín Fernández. I'm from Unquillo, Córdoba, Argentina. I study IT at Nuestra Señora de las Mercedes school. I really enjoy working with technology and learning new things.</div>
+                    
+                    <div class="question">Employer: Why do you want to work in our company?</div>
+                    <div class="answer">Candidate: Because I want to keep learning and improving my skills. I think your company is a great place to grow in the IT field and get real work experience.</div>
+                    
+                    <div class="question">Employer: You wrote that you had completed an internship at University Blas Pascal. What did you do there?</div>
+                    <div class="answer">Candidate: I worked in the computer labs. There I learned more about software and hardware, helped to solve real problems, and worked in a professional team.</div>
+                    
+                    <div class="question">Employer: What do you like the most about technology?</div>
+                    <div class="answer">Candidate: I like the fact that technology is always changing. There is always something new to learn and new challenges to face. It's exciting and creative.</div>
+                    
+                    <div class="question">Employer: How would you describe yourself?</div>
+                    <div class="answer">Candidate: I think I'm a responsible and adaptable person. I learn fast and I always try to find practical solutions. I also like working in teams.</div>
+                    
+                    <div class="question">Employer: What are your main strengths?</div>
+                    <div class="answer">Candidate: I'm patient, organized, and I never give up easily. I try to stay positive and do my best in everything I do.</div>
+                    
+                    <div class="question">Employer: And is there something you want to improve?</div>
+                    <div class="answer">Candidate: I want to keep improving my English and communication skills, especially when it comes to working with people from other countries.</div>
+                    
+                    <div class="question">Employer: In your cover letter you said you are a responsible and adaptable person. Can you give me an example of that?</div>
+                    <div class="answer">Candidate: Yes, for example, during my internship I learned new tasks very fast and adapted easily to the team and the work environment.</div>
+                    
+                    <div class="question">Employer: What time are you available to work?</div>
+                    <div class="answer">Candidate: I'm available in the morning, afternoon and evening, so I can adapt to different schedules.</div>
+                    
+                    <div class="question">Employer: In your cover letter you mentioned that you want to keep learning and growing. How do you think this job can help you with that?</div>
+                    <div class="answer">Candidate: I think this job will help me learn new things, get real experience, and grow as a professional while doing something I really like.</div>
+                    
+                    <h4 style="margin-top: 30px;">Question by the candidate</h4>
+                    
+                    <div class="question">Employer: That's all from my side, Agustin, do you have any questions about the job?</div>
+                    <div class="answer">Candidate: Yes What is the work modality like? Alone or in teams?</div>
+                    <div class="answer">Employer: Good question. You will help with computer maintenance and programming tasks. The work is mostly in teams but sometimes you will also have to work independently.</div>
+                    
+                    <div class="question">Candidate: Good. What are the working hours?</div>
+                    <div class="answer">Employer: Usually from 9 am to 5 pm, but we are flexible.</div>
+                    
+                    <div class="question">Candidate: Will I have a mentor or someone to guide me at the beginning?</div>
+                    <div class="answer">Employer: Yes, you will have a supervisor who will help you during your first weeks.</div>
+                    
+                    <div class="question">Employer: Thank you, Agustín. We are happy to tell you that you got the job! Welcome to the team.</div>
+                    <div class="answer">Candidate: Thank you very much! I'm really happy to start.</div>
+                </div>
+                
+                <div class="video-container">
+                    <h3>Video de la Entrevista</h3>
+                    <video width="100%" height="450" controls style="border-radius: 10px;">
+                        <source src="video interview.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento video.
+                    </video>
+                    <p class="video-note">Haz clic en play para ver la entrevista completa</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h3>Contacto</h3>
+            <div class="footer-links">
+                <a href="mailto:agustincho090@gmail.com">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="tel:3543694267">
+                    <i class="fas fa-phone"></i> Teléfono
+                </a>
+            </div>
+            <p class="copyright">&copy; 2025 Ángel Agustín Fernández Antoniazzi. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome para iconos -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
